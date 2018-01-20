@@ -1,5 +1,7 @@
 "use strict";
 
+console.log(md5("shellyjames90@yahoo.com".trim().toLowerCase()));
+
 var app = new Vue({
 	el: "#app",
 	data: {
@@ -9,23 +11,25 @@ var app = new Vue({
 			email: "shelljames90@yahoo.com",
 			time: Date.now(),
 			since: 0,
+			image: 'https://www.gravatar.com/avatar/',
 		},
 		{
 			name: "Spenser",
 			email: "hubby@soon.com",
 			time: Date.now(),
 			since: 0,
+			image: 'https://www.gravatar.com/avatar/',
 		},
 		{
 			name: "Sydney",
 			email: "please@sleepin.com",
 			time: Date.now(),
 			since: 0,
+			image: 'https://www.gravatar.com/avatar/',
 		},
 		],
 		enteredName: "",
 		enteredEmail: "",
-
 	},
 	methods: {
 		updateSinceValues: function () {
@@ -43,6 +47,7 @@ var app = new Vue({
 				email: this.enteredEmail,
 				time: Date.now(),
 				since: 0,
+				image: 'https://www.gravatar.com/avatar/' + md5(this.enteredEmail),
 			})
 
 			if(this.people.length > 4) {
@@ -51,7 +56,10 @@ var app = new Vue({
 
 			this.enteredName = "";
 			this.enteredEmail = "";
-		}
+		},
+		gravatar: function(){
+			return md5(this.enteredEmail.trim().toLowerCase());
+		},
 	},
 	created: function () {
 		setInterval(this.updateSinceValues, 6000);

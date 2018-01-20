@@ -15,7 +15,7 @@
 			<h1>Welcome to AcronymCon!</h1>
 			<ul>
 				<li v-for="person in people">
-					<img class="avatar" src="src/img/yoshi.png" alt="">
+					<img v-bind:src="person.image" alt="">
 					<h3>{{person.name}}</h3>
 					<p>{{person.since}} minute<span v-if="person.since != 1">s</span> ago</>
 				</li>
@@ -27,6 +27,7 @@
 			<input placeholder="email" v-model="enteredEmail" v-on:keyup.enter="submitPerson">		
 		</div>
 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.10.0/js/md5.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 		<script src="dist/js/app.js"></script>
 
